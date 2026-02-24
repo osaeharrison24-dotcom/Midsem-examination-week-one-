@@ -1,0 +1,106 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+class Student {
+private:
+    std::string name;
+    std::string indexNumber;
+
+public:
+    // Constructor
+    Student(std::string n, std::string id) : name(n), indexNumber(id) {}
+
+    // Getters
+    std::string getName() const { return name; }
+    std::string getIndexNumber() const { return indexNumber; }
+
+    // Display student details
+    void display() const {
+        std::cout << "Index: " << indexNumber << " | Name: " << name << std::endl;
+    }
+};
+
+void showMenu() {
+    std::cout << "\n--- Digital Attendance System ---" << std::endl;
+    std::cout << "1. Register Student" << std::endl;
+    std::cout << "2. View All Students" << std::endl;
+    std::cout << "0. Exit" << std::endl;
+    std::cout << "Enter choice: ";
+}
+
+int main() {
+    std::vector<Student> studentList;
+    int choice;
+
+    do {
+        showMenu();
+        std::cin >> choice;
+        std::cin.ignore(); // Clear buffer
+
+        if (choice == 1) {
+            std::string name, id;
+            std::cout << "Enter Name: ";
+            std::getline(std::cin, name);
+            std::cout << "Enter Index Number: ";
+            std::getline(std::cin, id);
+            
+            studentList.emplace_back(name, id);
+            std::cout << "Student registered successfully!\n";
+
+        } else if (choice == 2) {
+            std::cout << "\n--- Registered Students ---" << std::endl;
+            if (studentList.empty()) {
+                std::cout << "No students registered yet." << std::endl;
+            } else {
+                for (const auto& s : studentList) {
+                    s.display();
+                }
+            }
+        }
+    } while (choice != 0);
+
+    return 0;
+}
+
+void showMenu() {
+    std::cout << "\n--- Digital Attendance System ---" << std::endl;
+    std::cout << "1. Register Student" << std::endl;
+    std::cout << "2. View All Students" << std::endl;
+    std::cout << "0. Exit" << std::endl;
+    std::cout << "Enter choice: ";
+}
+
+int main() {
+    std::vector<Student> studentList;
+    int choice;
+
+    do {
+        showMenu();
+        std::cin >> choice;
+        std::cin.ignore(); // Clear buffer
+
+        if (choice == 1) {
+            std::string name, id;
+            std::cout << "Enter Name: ";
+            std::getline(std::cin, name);
+            std::cout << "Enter Index Number: ";
+            std::getline(std::cin, id);
+            
+            studentList.emplace_back(name, id);
+            std::cout << "Student registered successfully!\n";
+
+        } else if (choice == 2) {
+            std::cout << "\n--- Registered Students ---" << std::endl;
+            if (studentList.empty()) {
+                std::cout << "No students registered yet." << std::endl;
+            } else {
+                for (const auto& s : studentList) {
+                    s.display();
+                }
+            }
+        }
+    } while (choice != 0);
+
+    return 0;
+}
